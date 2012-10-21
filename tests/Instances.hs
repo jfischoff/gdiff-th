@@ -1,15 +1,13 @@
 {-# LANGUAGE TemplateHaskell, QuasiQuotes, TypeSynonymInstances, 
  GADTs, ExistentialQuantification, MultiParamTypeClasses, FlexibleInstances #-}
 module Instances where
+import Data.Generic.Diff ()
 import Data.Generic.Diff.TH
-import Data.Generic.Diff
 import Language.Haskell.TH
-import Language.Haskell.TH.Universe    
-import Data.Word
-import Data.Aeson
-import Language.C
 import Hdis86
 import Language.ECMAScript3
+import Language.Haskell.TH.Syntax (NameFlavour)
+
 
 type IntList = [Int]
 
@@ -48,51 +46,27 @@ data SumInTheType = SumInTheType {
         sitt :: SumType
     }
 
---makeGDiff ''SumInTheType
+makeGDiff ''SumInTheType
 
 data TypeA = AB TypeB Char
            
 data TypeB = TypeB [Float]
 
 data TypeC = TypeC
-
---makeGDiff ''TypeA
+makeGDiff ''TypeA
 
 newtype UnitTest = UnitTest ()
---makeGDiff ''UnitTest
+makeGDiff ''UnitTest
 
 newtype IntSubbedType = IntSubbedType (SubbedType Int)
 
 newtype NullJ = NullJ (JavaScript ())
---
---makeGDiff ''IntSubbedType
---makeGDiff ''CTranslUnit
---makeGDiff ''Instruction
---makeGDiff ''NullJ
 
--- makeGDiff ''Value
-
---data Tree a = Leaf a | Node (Tree (a,a))
---newtype WordTree = WordTree (Tree Word32)
---makeGDiff ''WordTree
-
--- $(makeGDiff ''TupleTest)
-
-
-$(do
-    --info <- specialize ''TypeA
-    --runIO $ print info    
-
-    --info <- reify ''()
-    --runIO $ print info
---    univ <- getUniverse ''DoubleList
---    runIO $ print univ
-
-    return [])
-
-
---makeGDiff ''UnpolyTest
---makeGDiff ''ListLike
---makeGDiff ''DoubleList
---makeGDiff ''Info
+makeGDiff ''Instruction
+makeGDiff ''NullJ
+makeGDiff ''UnpolyTest
+makeGDiff ''ListLike
+makeGDiff ''DoubleList
+makeGDiffWith defaultFamSuffix defaultConstructorRenamer 
+    ((''NameFlavour, LamE [WildP] . LitE . StringL $ "") : defaultPrimitives) ''Info
 

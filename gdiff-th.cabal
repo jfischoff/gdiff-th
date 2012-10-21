@@ -46,7 +46,12 @@ Library
   Hs-Source-Dirs: src
   
   -- Modules exported by the library.
-  Exposed-modules: Data.Generic.Diff.TH2
+  Exposed-modules: Data.Generic.Diff.TH
+  
+  Other-modules: Data.Generic.Diff.TH.Conversion, 
+                 Data.Generic.Diff.TH.Internal,
+                 Data.Generic.Diff.TH.Types
+                 Data.Generic.Diff.TH.Specialize
   
   -- Packages needed in order to build this package.
   Build-depends: base >= 4.0 && <= 6.0,
@@ -55,9 +60,10 @@ Library
                  th-expand-syns == 0.3.*,
                  uniplate == 1.6.*,
                  lens == 3.0.*,
-                 universe-th == 0.1.*,
                  pointless-haskell == 0.0.*,
-                 containers == 0.5.*
+                 containers == 0.5.*,
+                 mtl == 2.1.*,
+                 th-expand-syns == 0.3.*
                  
                  
   ghc-options:            -Wall
@@ -66,15 +72,13 @@ Test-Suite tests
     Hs-Source-Dirs: src, tests
     type:       exitcode-stdio-1.0
     main-is:    Main.hs
-    build-depends: base >= 4.0 && <= 6.0,
-                 template-haskell >= 2.6.0.0,
+    build-depends: 
                  DebugTraceHelpers >= 0.12,
                  QuickCheck >= 2.4.1.1,
                  HUnit >= 1.2.4.2,
                  test-framework-quickcheck2 >= 0.2.10,
                  test-framework-hunit >= 0.2.7,
                  test-framework >= 0.4.1.1,
-                 uniplate >= 1.6.5,
                  checkers >= 0.2.8,
                  mtl >= 2.0.1.0,
                  th-instances >= 0.1.0.14,
@@ -84,6 +88,5 @@ Test-Suite tests
                  gdiff >= 1.0,
                  tuple >= 0.2.0.1,
                  pointless-haskell == 0.0.*,
-                 universe-th == 0.1.*,
                  containers == 0.5.*
 

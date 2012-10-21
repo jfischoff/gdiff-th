@@ -1,0 +1,2 @@
+:set -isrc -itests
+:l tests/Main.hs
