@@ -167,6 +167,13 @@ makeGDiffWith :: String -> ConstructorRenamer -> [(Name, TH.Exp)] -> Name -> Q [
 makeGDiffWith familyPrefix constructorRenamer primitives name = do
     let familyName = mkName $ nameBase name ++ familyPrefix
         prefix     = nameBase name
+        
+    --check if it is a polymorphic type
+    dec <- reify name
+    
+    when (not $ null [x | VarT x <- universeBi dec]) $ 
+        error "type must be monomorphic"
+
 
     fam       <- toFam (map fst primitives) (constructorRenamer prefix) 
                     familyName =<< specialize name

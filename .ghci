@@ -1,2 +1,1 @@
-:set -isrc -itests
-:l tests/Main.hs
+:set -isrc -itests -iexamples

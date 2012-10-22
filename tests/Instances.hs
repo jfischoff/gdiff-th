@@ -61,7 +61,7 @@ makeGDiff ''UnitTest
 newtype IntSubbedType = IntSubbedType (SubbedType Int)
 
 newtype NullJ = NullJ (JavaScript ())
-
+-- makeGDiff ''SubbedType -- this should fail
 makeGDiff ''Instruction
 makeGDiff ''NullJ
 makeGDiff ''UnpolyTest

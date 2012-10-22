@@ -1,132 +1,152 @@
-	Sun Oct 21 14:59 2012 Time and Allocation Profiling Report  (Final)
+	Mon Oct 22 11:38 2012 Time and Allocation Profiling Report  (Final)
 
-	   CompareVersions +RTS -xc -p -RTS
+	   CompareVersions +RTS -p -xc -RTS
 
-	total time  =      185.46 secs   (185456 ticks @ 1000 us, 1 processor)
-	total alloc = 201,641,820,968 bytes  (excludes profiling overheads)
+	total time  =       28.17 secs   (28170 ticks @ 1000 us, 1 processor)
+	total alloc = 31,737,469,600 bytes  (excludes profiling overheads)
 
 COST CENTRE MODULE            %time %alloc
 
-steps       Data.Generic.Diff  76.1   97.1
-bestSteps   Data.Generic.Diff  18.3    0.0
-targetTail  Data.Generic.Diff   2.3    0.0
-reify       Data.Generic.Diff   1.5    2.2
+steps       Data.Generic.Diff  72.4   95.4
+bestSteps   Data.Generic.Diff  20.6    0.0
+reify       Data.Generic.Diff   2.3    3.4
+sourceTail  Data.Generic.Diff   1.8    0.0
 
 
-                                                                                                individual     inherited
-COST CENTRE                            MODULE                                 no.     entries  %time %alloc   %time %alloc
+                                                                                                 individual     inherited
+COST CENTRE                             MODULE                                 no.     entries  %time %alloc   %time %alloc
 
-MAIN                                   MAIN                                   113           0    0.0    0.0   100.0  100.0
- main                                  Main                                   227           0    0.0    0.0   100.0  100.0
-  show                                 Data.Generic.Diff                      248          64    0.0    0.0     0.0    0.0
-  diffModule                           Main                                   228           1    0.0    0.0   100.0  100.0
-   list                                Data.Generic.Diff                      233           2    0.0    0.0     0.0    0.0
-   diff                                Data.Generic.Diff                      229           1    0.0    0.0   100.0  100.0
-    diffL                              Data.Generic.Diff                      230           1    0.0    0.0   100.0  100.0
-     getEditScriptL                    Data.Generic.Diff                      244           1    0.0    0.0     0.0    0.0
-     diffLMemo                         Data.Generic.Diff                      231           1    0.0    0.0   100.0  100.0
-      diffLMemo'                       Data.Generic.Diff                      232       14198    0.0    0.0   100.0  100.0
-       matchConstructor                Data.Generic.Diff                      234       28394    0.0    0.0   100.0  100.0
-        matchConstructor.tryEach       Data.Generic.Diff                      235       44742    0.0    0.0   100.0  100.0
-         matchConstructor.matchOrRetry Data.Generic.Diff                      236       44742    0.0    0.0   100.0  100.0
-          isList                       Data.Generic.Diff                      241       28394    0.0    0.0     0.0    0.0
-          diffLMemo'.\                 Data.Generic.Diff                      237       14197    0.0    0.0   100.0  100.0
-           diffLMemo'.\.\              Data.Generic.Diff                      238       14197    0.0    0.0   100.0  100.0
-            diffLMemo'.\.\.d           Data.Generic.Diff                      291        1258    0.0    0.0    19.8   20.4
-             extendd                   Data.Generic.Diff                      292      738868    0.0    0.0    19.8   20.4
-              ins                      Data.Generic.Diff                      315        1208    0.0    0.0     0.0    0.0
-               reify                   Data.Generic.Diff                      316       12244    0.0    0.0     0.0    0.0
-              nc                       Data.Generic.Diff                      313        1208    0.0    0.0     0.0    0.0
-               reify                   Data.Generic.Diff                      314       12244    0.0    0.0     0.0    0.0
-              extendd'                 Data.Generic.Diff                      293      737660    0.0    0.0    19.8   20.4
-               extendd'.\              Data.Generic.Diff                      297      737660    0.1    0.1    19.1   20.4
-                extendd'.\.c           Data.Generic.Diff                      317      134447    0.0    0.0     0.0    0.0
-                extendd'.\.d           Data.Generic.Diff                      310      737610    0.0    0.0     0.0    0.0
-                extendd'.\.i           Data.Generic.Diff                      309      603213    0.0    0.0     0.0    0.0
-                bestEditScriptLMemo    Data.Generic.Diff                      300      737660    0.1    0.0    18.8   20.0
-                 cpy                   Data.Generic.Diff                      311      134447    0.0    0.0     0.0    0.1
-                  reify                Data.Generic.Diff                      312     2534308    0.0    0.1     0.0    0.1
-                   list                Data.Generic.Diff                      319      760308    0.0    0.0     0.0    0.0
-                 getEditScriptL        Data.Generic.Diff                      308     1340873    0.0    0.0     0.0    0.0
-                 del                   Data.Generic.Diff                      306      603213    0.0    0.0     0.1    0.1
-                  reify                Data.Generic.Diff                      307     5251768    0.1    0.1     0.1    0.1
-                   list                Data.Generic.Diff                      323        1577    0.0    0.0     0.0    0.0
-                 best                  Data.Generic.Diff                      303      603213    0.0    0.0    18.4   19.6
-                  bestSteps            Data.Generic.Diff                      305   494104713    3.7    0.0     3.7    0.0
-                  steps                Data.Generic.Diff                      304   987606479   14.7   19.6    14.7   19.6
-                 ins                   Data.Generic.Diff                      301      603213    0.0    0.0     0.1    0.2
-                  reify                Data.Generic.Diff                      302     6852030    0.1    0.1     0.1    0.1
-                cc                     Data.Generic.Diff                      298      737660    0.0    0.0     0.3    0.4
-                 reify                 Data.Generic.Diff                      299    15026530    0.3    0.3     0.3    0.3
-                  list                 Data.Generic.Diff                      318      726679    0.0    0.0     0.0    0.0
-               extractd                Data.Generic.Diff                      294      737660    0.0    0.0     0.6    0.0
-                sourceTail             Data.Generic.Diff                      296    39884918    0.6    0.0     0.6    0.0
-                isList                 Data.Generic.Diff                      295      737660    0.0    0.0     0.0    0.0
-            diffLMemo'.\.\.i           Data.Generic.Diff                      260       14134    0.0    0.0    80.2   79.6
-             extendi                   Data.Generic.Diff                      261     1902070    0.1    0.0    80.2   79.6
-              del                      Data.Generic.Diff                      287        1921    0.0    0.0     0.0    0.0
-               reify                   Data.Generic.Diff                      288       19114    0.0    0.0     0.0    0.0
-              cn                       Data.Generic.Diff                      285        1921    0.0    0.0     0.0    0.0
-               reify                   Data.Generic.Diff                      286       19114    0.0    0.0     0.0    0.0
-              extendi'                 Data.Generic.Diff                      262     1900005    0.0    0.0    80.1   79.6
-               extendi'.\              Data.Generic.Diff                      267     1887944    0.2    0.2    77.7   79.6
-                extendi'.\.c           Data.Generic.Diff                      290      363537    0.0    0.0     0.0    0.0
-                extendi'.\.d           Data.Generic.Diff                      289     1510529    0.0    0.0     0.0    0.0
-                extendi'.\.i           Data.Generic.Diff                      280     1887936    0.0    0.0     0.0    0.0
-                bestEditScriptLMemo    Data.Generic.Diff                      271     1887944    0.2    0.1    76.8   78.5
-                 cpy                   Data.Generic.Diff                      281      363580    0.0    0.0     0.1    0.2
-                  reify                Data.Generic.Diff                      282     6641508    0.1    0.2     0.1    0.2
-                   list                Data.Generic.Diff                      283     2346945    0.0    0.0     0.0    0.0
-                 getEditScriptL        Data.Generic.Diff                      279     3398430    0.1    0.0     0.1    0.0
-                 del                   Data.Generic.Diff                      277     1524364    0.1    0.0     0.2    0.4
-                  reify                Data.Generic.Diff                      278    15429244    0.1    0.3     0.1    0.3
-                   list                Data.Generic.Diff                      322          96    0.0    0.0     0.0    0.0
-                 best                  Data.Generic.Diff                      274     1524364    0.0    0.0    75.9   77.5
-                  bestSteps            Data.Generic.Diff                      276  1954799391   14.5    0.0    14.5    0.0
-                  steps                Data.Generic.Diff                      275  3909569708   61.4   77.5    61.4   77.5
-                 ins                   Data.Generic.Diff                      272     1524364    0.1    0.0     0.2    0.3
-                  reify                Data.Generic.Diff                      273    14454589    0.1    0.3     0.1    0.3
-                   list                Data.Generic.Diff                      321       64113    0.0    0.0     0.0    0.0
-                cc                     Data.Generic.Diff                      268     1887944    0.1    0.1     0.8    0.9
-                 reify                 Data.Generic.Diff                      269    37576977    0.7    0.8     0.7    0.8
-                  list                 Data.Generic.Diff                      284     1858643    0.0    0.0     0.0    0.0
-               extracti                Data.Generic.Diff                      263     1900005    0.0    0.0     2.3    0.0
-                targetTail             Data.Generic.Diff                      265   137661905    2.3    0.0     2.3    0.0
-                isList                 Data.Generic.Diff                      264     1900005    0.0    0.0     0.0    0.0
-            diffLMemo'.\.\.c           Data.Generic.Diff                      250       14197    0.0    0.0     0.0    0.0
-             appendList                Data.Generic.Diff                      252       56786    0.0    0.0     0.0    0.0
-             append                    Data.Generic.Diff                      251       56786    0.0    0.0     0.0    0.0
-            bestEditScriptLMemo        Data.Generic.Diff                      245       14197    0.0    0.0     0.0    0.0
-             del                       Data.Generic.Diff                      258         116    0.0    0.0     0.0    0.0
-              reify                    Data.Generic.Diff                      259        1442    0.0    0.0     0.0    0.0
-             best                      Data.Generic.Diff                      255         116    0.0    0.0     0.0    0.0
-              bestSteps                Data.Generic.Diff                      257        8088    0.0    0.0     0.0    0.0
-              steps                    Data.Generic.Diff                      256       16060    0.0    0.0     0.0    0.0
-             ins                       Data.Generic.Diff                      253         116    0.0    0.0     0.0    0.0
-              reify                    Data.Generic.Diff                      254        1442    0.0    0.0     0.0    0.0
-               list                    Data.Generic.Diff                      320         108    0.0    0.0     0.0    0.0
-             getEditScriptL            Data.Generic.Diff                      249        2136    0.0    0.0     0.0    0.0
-             cpy                       Data.Generic.Diff                      246       14081    0.0    0.0     0.0    0.0
-              reify                    Data.Generic.Diff                      247      285531    0.0    0.0     0.0    0.0
-               list                    Data.Generic.Diff                      266      123120    0.0    0.0     0.0    0.0
-            cc                         Data.Generic.Diff                      239       14197    0.0    0.0     0.0    0.0
-             reify                     Data.Generic.Diff                      240      316692    0.0    0.0     0.0    0.0
-              list                     Data.Generic.Diff                      270       15369    0.0    0.0     0.0    0.0
- CAF                                   Main                                   225           0    0.0    0.0     0.0    0.0
-  list                                 Data.Generic.Diff                      242          84    0.0    0.0     0.0    0.0
-  main                                 Main                                   226           1    0.0    0.0     0.0    0.0
- CAF                                   Language.Haskell.Exts                  213           0    0.0    0.0     0.0    0.0
- CAF                                   Language.Haskell.Exts.Extension        209           0    0.0    0.0     0.0    0.0
- CAF                                   Language.Haskell.Exts.Fixity           208           0    0.0    0.0     0.0    0.0
- CAF                                   Language.Haskell.Exts.InternalLexer    199           0    0.0    0.0     0.0    0.0
- CAF                                   Language.Haskell.Exts.ParseUtils       198           0    0.0    0.0     0.0    0.0
- CAF                                   Language.Haskell.Exts.InternalParser   197           0    0.0    0.0     0.0    0.0
- CAF                                   Data.Generic.Diff                      195           0    0.0    0.0     0.0    0.0
-  list                                 Data.Generic.Diff                      243           1    0.0    0.0     0.0    0.0
- CAF                                   GHC.Conc.Signal                        172           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Encoding                        164           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Encoding.Iconv                  162           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.FD                              157           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Handle.FD                       155           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.TopHandler                         146           0    0.0    0.0     0.0    0.0
- CAF                                   Text.Read.Lex                          129           0    0.0    0.0     0.0    0.0
+MAIN                                    MAIN                                   113           0    0.0    0.0   100.0  100.0
+ CAF                                    Main                                   225           0    0.0    0.0   100.0  100.0
+  list                                  Data.Generic.Diff                      245          47    0.0    0.0     0.0    0.0
+  main                                  Main                                   226           1    0.0    0.0   100.0  100.0
+   diffModule                           Main                                   230           1    0.0    0.0    99.9  100.0
+    list                                Data.Generic.Diff                      235           2    0.0    0.0     0.0    0.0
+    diff                                Data.Generic.Diff                      231           1    0.0    0.0    99.9  100.0
+     diffL                              Data.Generic.Diff                      232           1    0.0    0.0    99.9  100.0
+      getEditScriptL                    Data.Generic.Diff                      247           1    0.0    0.0     0.0    0.0
+      diffLMemo                         Data.Generic.Diff                      233           1    0.0    0.0    99.9  100.0
+       diffLMemo'                       Data.Generic.Diff                      234        1003    0.0    0.0    99.9  100.0
+        diffLMemo'.\                    Data.Generic.Diff                      292           0    0.0    0.0     0.0    0.0
+         ins                            Data.Generic.Diff                      297           0    0.0    0.0     0.0    0.0
+          reify                         Data.Generic.Diff                      298        1511    0.0    0.0     0.0    0.0
+           list                         Data.Generic.Diff                      299        1266    0.0    0.0     0.0    0.0
+         nc                             Data.Generic.Diff                      293           0    0.0    0.0     0.0    0.0
+          reify                         Data.Generic.Diff                      294        1511    0.0    0.0     0.0    0.0
+        matchConstructor                Data.Generic.Diff                      236        1759    0.0    0.0    99.9  100.0
+         matchConstructor.tryEach       Data.Generic.Diff                      237        2690    0.0    0.0    99.9  100.0
+          matchConstructor.matchOrRetry Data.Generic.Diff                      238        2690    0.0    0.0    99.9  100.0
+           diffLMemo'.\                 Data.Generic.Diff                      289         245    0.0    0.0     0.0    0.0
+            getEditScriptL              Data.Generic.Diff                      306         243    0.0    0.0     0.0    0.0
+            diffLMemo'.\.i              Data.Generic.Diff                      301         245    0.0    0.0     0.0    0.0
+             appendList                 Data.Generic.Diff                      303         485    0.0    0.0     0.0    0.0
+             append                     Data.Generic.Diff                      302         485    0.0    0.0     0.0    0.0
+            ins                         Data.Generic.Diff                      295         245    0.0    0.0     0.0    0.0
+             reify                      Data.Generic.Diff                      296         485    0.0    0.0     0.0    0.0
+            nc                          Data.Generic.Diff                      290         245    0.0    0.0     0.0    0.0
+             reify                      Data.Generic.Diff                      291         485    0.0    0.0     0.0    0.0
+              list                      Data.Generic.Diff                      300         240    0.0    0.0     0.0    0.0
+           isList                       Data.Generic.Diff                      244        1759    0.0    0.0     0.0    0.0
+           diffLMemo'.\                 Data.Generic.Diff                      240         757    0.0    0.0    99.9  100.0
+            diffLMemo'.\.\              Data.Generic.Diff                      241         757    0.0    0.0    99.9  100.0
+             diffLMemo'.\.\.d           Data.Generic.Diff                      307         736    0.0    0.0    46.3   45.1
+              extendd                   Data.Generic.Diff                      308      269601    0.1    0.0    46.3   45.1
+               extendd'                 Data.Generic.Diff                      316      268869    0.1    0.0    46.3   45.0
+                extendd'.\              Data.Generic.Diff                      320      268869    0.1    0.2    44.4   45.0
+                 extendd'.\.c           Data.Generic.Diff                      337       37767    0.0    0.0     0.0    0.0
+                 extendd'.\.d           Data.Generic.Diff                      333      268865    0.0    0.0     0.0    0.0
+                 extendd'.\.i           Data.Generic.Diff                      332      231102    0.0    0.0     0.0    0.0
+                 bestEditScriptLMemo    Data.Generic.Diff                      323      268869    0.2    0.1    43.6   44.2
+                  cpy                   Data.Generic.Diff                      335       37767    0.0    0.0     0.1    0.1
+                   reify                Data.Generic.Diff                      336      646286    0.1    0.1     0.1    0.1
+                    list                Data.Generic.Diff                      338      223022    0.0    0.0     0.0    0.0
+                  getEditScriptL        Data.Generic.Diff                      331      499971    0.0    0.0     0.0    0.0
+                  del                   Data.Generic.Diff                      329      231102    0.1    0.0     0.2    0.3
+                   reify                Data.Generic.Diff                      330     1966100    0.1    0.3     0.1    0.3
+                    list                Data.Generic.Diff                      344          33    0.0    0.0     0.0    0.0
+                  best                  Data.Generic.Diff                      326      231102    0.0    0.0    43.0   43.4
+                   bestSteps            Data.Generic.Diff                      328   172285551    9.2    0.0     9.2    0.0
+                   steps                Data.Generic.Diff                      327   344340007   33.7   43.4    33.7   43.4
+                  ins                   Data.Generic.Diff                      324      231102    0.0    0.0     0.2    0.3
+                   reify                Data.Generic.Diff                      325     2060260    0.1    0.3     0.1    0.3
+                 cc                     Data.Generic.Diff                      321      268869    0.1    0.1     0.7    0.7
+                  reify                 Data.Generic.Diff                      322     4780530    0.6    0.6     0.6    0.6
+                   list                 Data.Generic.Diff                      334      263039    0.0    0.0     0.0    0.0
+                extractd                Data.Generic.Diff                      317      268869    0.0    0.0     1.8    0.0
+                 sourceTail             Data.Generic.Diff                      319    19670508    1.8    0.0     1.8    0.0
+                 isList                 Data.Generic.Diff                      318      268869    0.0    0.0     0.0    0.0
+               ins                      Data.Generic.Diff                      311         732    0.0    0.0     0.0    0.0
+                reify                   Data.Generic.Diff                      312        6631    0.0    0.0     0.0    0.0
+               nc                       Data.Generic.Diff                      309         732    0.0    0.0     0.0    0.0
+                reify                   Data.Generic.Diff                      310        6631    0.0    0.0     0.0    0.0
+             diffLMemo'.\.\.i           Data.Generic.Diff                      266         736    0.0    0.0    53.5   54.8
+              extendi                   Data.Generic.Diff                      267      451536    0.1    0.0    53.5   54.8
+               del                      Data.Generic.Diff                      341         736    0.0    0.0     0.0    0.0
+                reify                   Data.Generic.Diff                      342        6600    0.0    0.0     0.0    0.0
+               cn                       Data.Generic.Diff                      339         736    0.0    0.0     0.0    0.0
+                reify                   Data.Generic.Diff                      340        6600    0.0    0.0     0.0    0.0
+               extendi'                 Data.Generic.Diff                      268      450800    0.0    0.0    53.4   54.8
+                extendi'.\              Data.Generic.Diff                      272      450800    0.2    0.3    52.6   54.8
+                 extendi'.\.c           Data.Generic.Diff                      305       63301    0.0    0.0     0.0    0.0
+                 extendi'.\.d           Data.Generic.Diff                      304      387499    0.0    0.0     0.0    0.0
+                 extendi'.\.i           Data.Generic.Diff                      285      450800    0.0    0.0     0.0    0.0
+                 bestEditScriptLMemo    Data.Generic.Diff                      276      450800    0.3    0.1    51.3   53.3
+                  cpy                   Data.Generic.Diff                      286       63301    0.0    0.0     0.1    0.2
+                   reify                Data.Generic.Diff                      287     1085863    0.1    0.2     0.1    0.2
+                    list                Data.Generic.Diff                      288      381820    0.0    0.0     0.0    0.0
+                  getEditScriptL        Data.Generic.Diff                      284      838299    0.1    0.0     0.1    0.0
+                  del                   Data.Generic.Diff                      282      387499    0.1    0.1     0.3    0.5
+                   reify                Data.Generic.Diff                      283     3475597    0.2    0.4     0.2    0.4
+                    list                Data.Generic.Diff                      343         240    0.0    0.0     0.0    0.0
+                  best                  Data.Generic.Diff                      279      387499    0.1    0.0    50.1   52.0
+                   bestSteps            Data.Generic.Diff                      281   206296907   11.4    0.0    11.4    0.0
+                   steps                Data.Generic.Diff                      280   412418525   38.6   51.9    38.6   51.9
+                  ins                   Data.Generic.Diff                      277      387499    0.1    0.1     0.5    0.6
+                   reify                Data.Generic.Diff                      278     3290392    0.4    0.5     0.4    0.5
+                    list                Data.Generic.Diff                      314      951487    0.0    0.0     0.0    0.0
+                 cc                     Data.Generic.Diff                      273      450800    0.2    0.1     1.0    1.2
+                  reify                 Data.Generic.Diff                      274     8031805    0.8    1.1     0.8    1.1
+                   list                 Data.Generic.Diff                      315      444624    0.0    0.0     0.0    0.0
+                extracti                Data.Generic.Diff                      269      450800    0.0    0.0     0.8    0.0
+                 targetTail             Data.Generic.Diff                      271     7365304    0.8    0.0     0.8    0.0
+                 isList                 Data.Generic.Diff                      270      450800    0.0    0.0     0.0    0.0
+             diffLMemo'.\.\.c           Data.Generic.Diff                      256         757    0.0    0.0     0.0    0.0
+              appendList                Data.Generic.Diff                      258        3031    0.0    0.0     0.0    0.0
+              append                    Data.Generic.Diff                      257        3031    0.0    0.0     0.0    0.0
+             bestEditScriptLMemo        Data.Generic.Diff                      248         757    0.0    0.0     0.1    0.1
+              del                       Data.Generic.Diff                      264         494    0.0    0.0     0.0    0.0
+               reify                    Data.Generic.Diff                      265        4241    0.0    0.0     0.0    0.0
+              best                      Data.Generic.Diff                      261         494    0.0    0.0     0.1    0.1
+               bestSteps                Data.Generic.Diff                      263      268889    0.0    0.0     0.0    0.0
+               steps                    Data.Generic.Diff                      262      537284    0.0    0.1     0.0    0.1
+              ins                       Data.Generic.Diff                      259         494    0.0    0.0     0.0    0.0
+               reify                    Data.Generic.Diff                      260        4345    0.0    0.0     0.0    0.0
+                list                    Data.Generic.Diff                      313        2931    0.0    0.0     0.0    0.0
+              getEditScriptL            Data.Generic.Diff                      255        1251    0.0    0.0     0.0    0.0
+              cpy                       Data.Generic.Diff                      249         263    0.0    0.0     0.0    0.0
+               reify                    Data.Generic.Diff                      250        4562    0.0    0.0     0.0    0.0
+                list                    Data.Generic.Diff                      253        3264    0.0    0.0     0.0    0.0
+             cc                         Data.Generic.Diff                      242         757    0.0    0.0     0.0    0.0
+              reify                     Data.Generic.Diff                      243       13755    0.0    0.0     0.0    0.0
+               list                     Data.Generic.Diff                      275        1457    0.0    0.0     0.0    0.0
+   showCompressed                       Utils                                  227           1    0.0    0.0     0.1    0.0
+    compress                            Data.Generic.Diff                      229        1044    0.0    0.0     0.0    0.0
+     compress.d'                        Data.Generic.Diff                      254         716    0.0    0.0     0.0    0.0
+     copied                             Data.Generic.Diff                      252        1211    0.0    0.0     0.0    0.0
+     isList                             Data.Generic.Diff                      251         716    0.0    0.0     0.0    0.0
+    pprEdits                            Utils                                  228         643    0.0    0.0     0.0    0.0
+ CAF                                    System.Console.Terminfo.PrettyPrint    223           0    0.0    0.0     0.0    0.0
+ CAF                                    System.Console.Terminfo.Base           217           0    0.0    0.0     0.0    0.0
+ CAF                                    System.Console.Terminfo.Color          215           0    0.0    0.0     0.0    0.0
+ CAF                                    System.Console.Terminfo.Effects        214           0    0.0    0.0     0.0    0.0
+ CAF                                    Language.Haskell.Exts                  213           0    0.0    0.0     0.0    0.0
+ CAF                                    Language.Haskell.Exts.InternalLexer    199           0    0.0    0.0     0.0    0.0
+ CAF                                    Language.Haskell.Exts.InternalParser   197           0    0.0    0.0     0.0    0.0
+ CAF                                    Data.Generic.Diff                      195           0    0.0    0.0     0.0    0.0
+  list                                  Data.Generic.Diff                      246           1    0.0    0.0     0.0    0.0
+ CAF                                    GHC.Conc.Signal                        172           0    0.0    0.0     0.0    0.0
+ CAF                                    GHC.IO.Encoding                        164           0    0.0    0.0     0.0    0.0
+ CAF                                    GHC.IO.Encoding.Iconv                  162           0    0.0    0.0     0.0    0.0
+ CAF                                    GHC.IO.FD                              157           0    0.0    0.0     0.0    0.0
+ CAF                                    GHC.IO.Handle.FD                       155           0    0.0    0.0     0.0    0.0
+  main                                  Main                                   239           0    0.0    0.0     0.0    0.0
