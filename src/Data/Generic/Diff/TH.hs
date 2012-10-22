@@ -7,7 +7,7 @@
 --import "Data.Generic.Diff"  
 --import "Data.Generic.Diff.TH"  
 --import "System.Console.Terminfo.Color"
---import "Text.PrettyPrint.Free hiding (parens)"
+--import "Text.PrettyPrint.Free"
 --import "System.Console.Terminfo.PrettyPrint"
 --    
 --data Exp = Exp :+: Exp
