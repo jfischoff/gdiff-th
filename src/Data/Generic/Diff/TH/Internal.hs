@@ -12,15 +12,8 @@ import Data.Generic.Diff.TH.Conversion
 import Data.Maybe(fromMaybe)
 import Data.Word
 import Data.Int
---TODO
---I should check that the root type is monomorphic
 
---Questions
---performance
---Can I use this to perform a patch that 
---Version control stuff?
---Assuming the formatting is fine
-
+-- | Default primitives and expressions for showing them
 defaultPrimitives :: [(Name, TH.Exp)]
 defaultPrimitives = map (, VarE 'show) defaultNames
 
@@ -160,9 +153,24 @@ mkGADT (Fam {..}) = do
 
     dataD (return []) _famName [PlainTV a, PlainTV b] constrs []
 
+-- | The type of function used for naming the GADTs constructors
+--
+--   Arg0 : The family suffix
+--
+--   Arg1 : The name of the constructor 
+--
+--   Arg2 : The specialized type the constructor is from
 type ConstructorRenamer = (String -> Name -> TH.Type -> Q Name)
 
---TODO make this take a renameFunctions: for the family, for the constructors
+-- | Customizable creation.
+--
+--   Arg0 : The suffix added to the Family 
+--
+--   Arg1 : Function used for naming constructors of the GADT after specialization
+--
+--   Arg2 : A list of primitives and an expression for showing them
+--
+--   Arg3 : The root type
 makeGDiffWith :: String -> ConstructorRenamer -> [(Name, TH.Exp)] -> Name -> Q [Dec]
 makeGDiffWith familyPrefix constructorRenamer primitives name = do
     let familyName = mkName $ nameBase name ++ familyPrefix
@@ -182,15 +190,18 @@ makeGDiffWith familyPrefix constructorRenamer primitives name = do
 
     return $ gadt : instances
     
---TODO make something better as a default
+-- | Default constructor renamer. Using the family suffix, the 
+--   name of the constructor and the specialized type of constructor
 defaultConstructorRenamer :: String -> Name -> TH.Type -> Q Name
 defaultConstructorRenamer prefix n typ = return . mkName $ 
         filter (\x -> x /= '[' && x /= ']') $ prefix ++ 
            typToString typ ++ prettifyName n ++ "C"
            
+-- | Default suffix for the family "Family"           
 defaultFamSuffix :: String
 defaultFamSuffix = "Family"
     
+-- | Create the GADT and instances for GDiff with the defaults    
 makeGDiff :: Name -> Q [Dec]
 makeGDiff = makeGDiffWith defaultFamSuffix defaultConstructorRenamer defaultPrimitives
 
