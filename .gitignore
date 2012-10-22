@@ -40,3 +40,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
+*.p_o
+*.hi
+*.*~

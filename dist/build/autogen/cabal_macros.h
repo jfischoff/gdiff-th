@@ -63,3 +63,17 @@
   (major1) == 1 && (major2) <  6 || \
   (major1) == 1 && (major2) == 6 && (minor) <= 7)
 
+/* package hdis86-0.2 */
+#define VERSION_hdis86 "0.2"
+#define MIN_VERSION_hdis86(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  2 || \
+  (major1) == 0 && (major2) == 2 && (minor) <= 0)
+
+/* package language-ecmascript-0.9 */
+#define VERSION_language_ecmascript "0.9"
+#define MIN_VERSION_language_ecmascript(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 0)
+

@@ -49,12 +49,13 @@
 --    End       -> line
 -- @
 --
---  Running the main function above would result in the following output
--- @
---:+: :+: :+: :+: :+: :+: :+: :+: :+: :+: :+: :+:  ...  B + 42 - 9  ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...  
--- @
---  Except with pretty colors 
-module Data.Generic.Diff.TH (
+--   Running the main function above would result in the following output
+--
+-- >>> main
+-- :+: :+: :+: :+: :+: :+: :+: :+: :+: :+: :+: :+:  ...  B + 42 - 9  ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ... 
+--
+--   Except with pretty colors :).
+module Data.Generic.Diff.TH(
     -- * Main Creation Function
     makeGDiff, 
     -- * Customizable Creation
@@ -62,5 +63,7 @@ module Data.Generic.Diff.TH (
     defaultFamSuffix,
     defaultConstructorRenamer, 
     defaultPrimitives, 
-    ConstructorRenamer) where
+    ConstructorRenamer
+    ) where
+
 import Data.Generic.Diff.TH.Internal
