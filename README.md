@@ -1,6 +1,6 @@
 Generate GDiff GADTs and Associated Instances
 =============
-gdiff-th is a library for generating the necessary apparatus for preforming type safe diffs and patches with the gdiff library. 
+gdiff-th is a library for generating the necessary apparatus for preforming typesafe diffs and patches with the gdiff library. 
 
 If you are unfamiliar with the gdiff library it can be found here http://hackage.haskell.org/package/gdiff
 
