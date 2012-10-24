@@ -7,7 +7,7 @@ Name:                gdiff-th
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-Version:             0.1.0.3
+Version:             0.1.0.4
 
 -- A short (one-line) description of the package.
 Synopsis:            Generate gdiff GADTs and Instances.
@@ -24,7 +24,9 @@ Description:
     I am not convinced there are no bugs in my code yet. There are examples in the @examples@ directory of the 
     cabal tarball. Also the main module includes an example in the documentation.
     .    
-    * New in this version: It's functional.
+    * New in 0.1.0.0 : It's functional.
+    .
+    * New in 0.1.0.4 : Builds on GHC 7.6.1, 7.4.2, and 7.0.3
 
 -- The license under which the package is released.
 License:             BSD3
@@ -33,16 +35,16 @@ License:             BSD3
 License-file:        LICENSE
 
 -- The package author(s).
--- Author:  Jonathan Fischoff            
+Author:  Jonathan Fischoff            
 
 -- An email address to which users can send suggestions, bug reports,
 -- and patches.
 Maintainer:          jonathangfischoff@gmail.com
 
 -- A copyright notice.
--- Copyright: Copyright 2012 Jonathan Fischoff           
+Copyright: (c) 2012 Jonathan Fischoff           
 
-Category:            Generics
+Category:            Generics, Testing
 
 Build-type:          Simple
     
@@ -55,6 +57,11 @@ Extra-source-files: examples/Expr.hs
                     
 -- Constraint on the version of Cabal needed to build this package.
 Cabal-version:       >=1.8
+
+homepage:    https://github.com/jfischoff/gdiff-th
+bug-reports: https://github.com/jfischoff/gdiff-th/issues
+tested-with: GHC == 7.6.1
+
 
 source-repository head
     type:     git
@@ -73,33 +80,28 @@ Library
   
   -- Packages needed in order to build this package.
   Build-depends: base >= 4.0 && <= 6.0,
-                 template-haskell == 2.8.*,
                  gdiff == 1.0.*,
                  th-expand-syns == 0.3.*,
                  uniplate == 1.6.*,
-                 lens == 3.0.*,
-                 pointless-haskell == 0.0.*,
-                 containers == 0.5.*,
-                 mtl == 2.1.*,
-                 th-expand-syns == 0.3.*
+                 containers,
+                 mtl == 2.1.*
+                    
+ if impl(ghc == 7.0.3)
+    Build-depends: template-haskell < 2.6.0
+ else
+    Build-depends: template-haskell < 2.9.0
+    ghc-options: -Wall
                  
-                 
-  ghc-options:            -Wall
-
 Test-Suite tests
     Hs-Source-Dirs: src, tests
     type:       exitcode-stdio-1.0
     main-is:    Main.hs
     build-depends:   base >= 4.0 && <= 6.0,
-                     template-haskell == 2.8.*,
+                     template-haskell < 2.9.0,
                      gdiff == 1.0.*,
                      th-expand-syns == 0.3.*,
                      uniplate == 1.6.*,
-                     lens == 3.0.*,
-                     pointless-haskell == 0.0.*,
-                     containers == 0.5.*,
-                     mtl == 2.1.*,
-                     th-expand-syns == 0.3.*,
-                     language-ecmascript == 0.*,
-                     hdis86 == 0.*
+                     containers,
+                     mtl == 2.1.*
+
 

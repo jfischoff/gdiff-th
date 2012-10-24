@@ -1,4 +1,5 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell, CPP #-}
+{-# OPTIONS_GHC -pgmPcpphs  -optP--cpp #-}
 module Data.Generic.Diff.TH.Conversion where
 import Data.Generic.Diff.TH.Types
 import qualified Language.Haskell.TH as TH
@@ -23,7 +24,9 @@ typToString x = case x of
     AppT a b        -> typToString a ++ typToString b
     ConT n          -> prettifyName n
     TupleT c        -> "Tuple" ++ show c
+#if __GLASGOW_HASKELL__ > 700
     UnboxedTupleT c -> "UnboxedTupleT" ++ show c
+#endif
     ListT           -> "List"
     _               -> error $ "Unsupported type in " ++ show x
 

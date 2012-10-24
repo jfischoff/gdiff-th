@@ -3,7 +3,7 @@
 module Main where
 import Data.Generic.Diff.TH ()
 import Data.Generic.Diff ()
-import Instances ()
+-- import Instances ()
 
 -- great test huh?
 -- Mostly I am making sure it is able to build "something" on large

@@ -1,11 +1,16 @@
-{-# LANGUAGE TemplateHaskell, TupleSections #-}
+{-# LANGUAGE TemplateHaskell, TupleSections, CPP #-}
+{-# OPTIONS_GHC -pgmPcpphs  -optP--cpp #-}
 module Data.Generic.Diff.TH.Specialize where
 import Language.Haskell.TH
 import Data.Generics.Uniplate.Data (childrenBi, transformBi, transformBiM)
 import Data.Maybe (fromMaybe, maybeToList)
 import Control.Monad.Reader
 import Control.Monad.State
+#if __GLASGOW_HASKELL__ < 704
+import Control.Applicative ((<$>), Applicative(..))
+#else
 import Control.Applicative ((<$>))
+#endif
 import Data.List  (nub)
 import Language.Haskell.TH.Ppr (split)
 import Data.Traversable (traverse)
@@ -16,6 +21,12 @@ specialize :: Name -> Q [(Type, Dec)]
 specialize n = nub <$> evalStateT (specializeChildDecs [] n) []
 
 type Context = StateT [([Type], Name)] Q
+
+#if __GLASGOW_HASKELL__ < 704
+instance Applicative Q where
+    pure  = return
+    (<*>) = ap 
+#endif
 
 --This is the main recursive function
 specializeChildDecs :: [Type] -> Name -> Context [(Type, Dec)]
@@ -35,6 +46,8 @@ specializeChildDecs args n = do
             children <- fmap concat . sequence $ [go t | t <- childrenBi sdec]
             return $ (foldl AppT (ConT n) args, sdec) : children
         Nothing  -> return []
+
+
 
 --Only look up the [Type] Name combos once
 --I also expand the type synonym here
@@ -92,7 +105,9 @@ getTypeName :: Type -> Name
 getTypeName x = case x of
         ConT n -> n
         TupleT c          -> mkName $ "(" ++ replicate (c - 1) ',' ++ ")"
+#if __GLASGOW_HASKELL__ > 700
         UnboxedTupleT c   -> mkName $ "(" ++ replicate c ',' ++ ")"
+#endif
         ListT             -> ''[]
         _ -> error $ show x ++ " is not a ConT"
 

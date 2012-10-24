@@ -1,5 +1,6 @@
 {-#  LANGUAGE TemplateHaskell, QuasiQuotes, TupleSections, 
-    RecordWildCards, DeriveDataTypeable #-}
+    RecordWildCards, DeriveDataTypeable, CPP #-}
+{-# OPTIONS_GHC -pgmPcpphs  -optP--cpp #-}    
 module Data.Generic.Diff.TH.Internal where
 import Data.Generic.Diff.TH.Types
 import Language.Haskell.TH
@@ -131,6 +132,11 @@ typInstance familyName (FamType {..}) = do
 
 mkAllInstances :: [(Name, TH.Exp)] -> Fam -> Q [Dec]
 mkAllInstances prims x = liftM2 (:) (famInstance prims x) (familyTypeInstances x)
+
+#if __GLASGOW_HASKELL__ < 706
+forallC :: [TyVarBndr] -> CxtQ -> ConQ -> ConQ    
+forallC ns ctxt con = liftM2 (ForallC ns) ctxt con
+#endif
 
 mkGADTConstructor :: Name -> Name -> TH.Type -> FamCon -> ConQ
 mkGADTConstructor a b typ (FamCon {..}) = case _famConHardness of

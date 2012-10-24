@@ -1,6 +1,6 @@
 {-#  LANGUAGE TemplateHaskell, DeriveDataTypeable #-}
 module Data.Generic.Diff.TH.Types where
-import Control.Lens
+--import Control.Lens
 import Data.Data
 import Language.Haskell.TH
 
@@ -16,7 +16,7 @@ data FamCon = FamCon {
     }
     deriving(Data, Typeable, Show, Eq)
 
-makeLenses ''FamCon
+--makeLenses ''FamCon
 
 data FamType = FamType {
         _famTypeType         :: Type    ,
@@ -24,7 +24,7 @@ data FamType = FamType {
     }
     deriving(Data, Typeable, Show, Eq)
 
-makeLenses ''FamType
+--makeLenses ''FamType
 
 data Fam = Fam {
         _famName  :: Name     ,
@@ -32,4 +32,4 @@ data Fam = Fam {
     }
     deriving(Data, Typeable, Show, Eq)
 
-makeLenses ''Fam
+--makeLenses ''Fam
