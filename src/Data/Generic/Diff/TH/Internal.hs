@@ -169,15 +169,15 @@ mkGADT (Fam {..}) = do
 type ConstructorRenamer = (String -> Name -> TH.Type -> Q Name)
 
 -- | Customizable creation.
---
---   Arg0 : The suffix added to the Family 
---
---   Arg1 : Function used for naming constructors of the GADT after specialization
---
---   Arg2 : A list of primitives and an expression for showing them
---
---   Arg3 : The root type
-makeGDiffWith :: String -> ConstructorRenamer -> [(Name, TH.Exp)] -> Name -> Q [Dec]
+makeGDiffWith :: String 
+              -- ^ The suffix added to the Family 
+              -> ConstructorRenamer 
+              -- ^ Function used for naming constructors of the GADT after specialization
+              -> [(Name, TH.Exp)] 
+              -- ^ A list of primitives and an expression for showing them
+              -> Name 
+              -- ^ The root type
+              -> Q [Dec]
 makeGDiffWith familyPrefix constructorRenamer primitives name = do
     let familyName = mkName $ nameBase name ++ familyPrefix
         prefix     = nameBase name
