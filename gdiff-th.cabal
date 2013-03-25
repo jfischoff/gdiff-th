@@ -7,7 +7,7 @@ Name:                gdiff-th
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-Version:             0.1.0.5
+Version:             0.1.0.6
 
 -- A short (one-line) description of the package.
 Synopsis:            Generate gdiff GADTs and Instances.
@@ -18,6 +18,7 @@ Description:
     There are examples in the @examples@ directory of the cabal tarball. Also the main module includes an example in the documentation.
     .
     * 0.1.0.4 : Builds on GHC 7.6.1, 7.4.2, and 7.0.3
+    .
     * 0.1.0.5 : Doc fixes.
 
 -- The license under which the package is released.
