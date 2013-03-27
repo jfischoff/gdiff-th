@@ -43,7 +43,7 @@ badParser x = runParser pExp () "" x where
    
 deriveEnumerable ''Exp 
 
--- A very important variant that will fail
+-- A very important invariant that will fail
 pprToParseRoundTrip :: Exp -> Bool
 pprToParseRoundTrip x = either (const False) (x ==) $ (badParser . ppr) x
 
