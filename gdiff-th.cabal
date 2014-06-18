@@ -53,7 +53,7 @@ Library
                  th-expand-syns == 0.3.*,
                  uniplate == 1.6.*,
                  containers,
-                 mtl == 2.1.*
+                 mtl == 2.2.*
                     
  if impl(ghc == 7.0.3)
     Build-depends: template-haskell < 2.6.0
