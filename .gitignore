@@ -47,3 +47,7 @@ Thumbs.db
 dist
 tags
 *.prof
+
+# stack #
+#########
+.stack-work
